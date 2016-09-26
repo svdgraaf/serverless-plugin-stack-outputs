@@ -22,3 +22,4 @@ sls deploy
 ```
 
 # Example
+![Example](https://raw.githubusercontent.com/svdgraaf/serverless-plugin-stack-outputs/master/docs/example.gif)
