@@ -1,0 +1,23 @@
+{
+  "author": {
+    "name": "Sander van de Graaf"
+  },
+  "description": "Plugin for the SLS 1.x that outputs all stack outputs",
+  "main": "src/index.js",
+  "maintainers": [
+    {
+      "email": "mail@svdgraaf.nl",
+      "name": "svdgraaf"
+    }
+  ],
+  "name": "serverless-plugin-stack-outputs",
+  "repository": {
+    "git": "https://github.com/svdgraaf/serverless-plugin-stack-outputs"
+  },
+  "version": "1.0.0",
+  "dependencies": {
+    "class.extend": "0.9.2",
+    "underscore": "1.8.3"
+  },
+  "license": "MIT"
+}
