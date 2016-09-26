@@ -2,7 +2,11 @@
 Displays stack outputs for your serverless stacks
 
 # Installation
-Install the package: `npm install serverless-plugin-stack-outputs`
+Install the package:
+```bash
+npm install serverless-plugin-stack-outputs
+```
+
 Add it to your plugin list in `serverless.yml`:
 
 ```yaml
@@ -11,15 +15,6 @@ plugins:
 ```
 
 And it will automagically work. Whenever you call `info` or `deploy`, the outputs will be appended to output
-
-# Usage
-```bash
-sls info
-```
-
-```bash
-sls deploy
-```
 
 # Example
 ![Example](https://raw.githubusercontent.com/svdgraaf/serverless-plugin-stack-outputs/master/docs/example.gif)
