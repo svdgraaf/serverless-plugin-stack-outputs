@@ -15,7 +15,6 @@ module.exports = Class.extend({
     // find the serverless sdk
     _.forEach(this._serverless.pluginManager.plugins, function(plugin){
       if (plugin.constructor.name == 'AwsInfo') {
-
         // got the info plugin, hijack it
         that._SDK = plugin.sdk
       }
@@ -29,6 +28,9 @@ module.exports = Class.extend({
 
     this.commands = {
       info: {
+        lifecycleEvents: [
+          'info',
+        ],
         commands:{
           outputs: {
             usage: 'Displays stack outputs',
@@ -42,7 +44,19 @@ module.exports = Class.extend({
   },
 
   outputStackOutput: function() {
-    const stackName = `${this._serverless.service.service}-${this._opts.stage}`;
+    // find the correct stage
+    var stage = this._serverless.service.defaults.stage;
+    if (this._serverless.variables.options.stage) {
+      stage = this._serverless.variables.options.stage;
+    }
+
+    // find the correct stage
+    var region = this._serverless.service.defaults.region;
+    if (this._serverless.variables.options.region) {
+      region = this._serverless.variables.options.region;
+    }
+
+    const stackName = `${this._serverless.service.service}-${stage}`;
 
     // get all the outputs from AWS
     this._SDK.request('CloudFormation',
@@ -50,8 +64,8 @@ module.exports = Class.extend({
       {
         StackName: stackName
       },
-      this._opts.stage,
-      this._opts.region
+      stage,
+      region
     ).then((result) => {
       if (result) {
         const outputs = result.Stacks[0].Outputs;
