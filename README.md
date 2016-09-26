@@ -14,7 +14,20 @@ plugins:
   - serverless-plugin-stack-outputs
 ```
 
-And it will automagically work. Whenever you call `sls info --verbose` or `sls deploy --verbose`, the outputs will be appended to output. You can also get just the stack outputs via `sls info outputs`.
+And it will automagically work.
+
+# Usage
+Whenever you call `info` or `deploy` with the `--verbose` option, the stack outputs will be appended:
+
+```bash
+sls info --verbose
+sls deploy --verbose
+```
+
+You can also get just the stack outputs directly via:
+```bash
+sls info outputs
+```
 
 # Example
 ![Example](https://raw.githubusercontent.com/svdgraaf/serverless-plugin-stack-outputs/master/docs/example.gif)
