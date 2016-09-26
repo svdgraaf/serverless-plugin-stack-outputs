@@ -24,6 +24,20 @@ module.exports = Class.extend({
     this.hooks = {
       'after:deploy:deploy': this.outputStackOutput.bind(this),
       'after:info:info': this.outputStackOutput.bind(this),
+      'info:outputs:output':  this.outputStackOutput.bind(this),
+    };
+
+    this.commands = {
+      info: {
+        commands:{
+          outputs: {
+            usage: 'Displays stack outputs',
+            lifecycleEvents: [
+              'output',
+            ],
+          }
+        },
+      },
     };
   },
 

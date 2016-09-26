@@ -14,7 +14,7 @@ plugins:
   - serverless-plugin-stack-outputs
 ```
 
-And it will automagically work. Whenever you call `info` or `deploy`, the outputs will be appended to output
+And it will automagically work. Whenever you call `sls info` or `sls deploy`, the outputs will be appended to output. You can also only get the outputs via `sls info outputs`.
 
 # Example
 ![Example](https://raw.githubusercontent.com/svdgraaf/serverless-plugin-stack-outputs/master/docs/example.gif)
