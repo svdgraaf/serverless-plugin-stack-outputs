@@ -20,11 +20,18 @@ module.exports = Class.extend({
       }
     })
 
+    // always output when the output command is called
     this.hooks = {
-      'after:deploy:deploy': this.outputStackOutput.bind(this),
-      'after:info:info': this.outputStackOutput.bind(this),
       'info:outputs:output':  this.outputStackOutput.bind(this),
     };
+
+    // on verbose, also output the outputs after deploy, and on info
+    if (this._opts.verbose) {
+      this.hooks = _.merge(this.hooks, {
+        'after:deploy:deploy': this.outputStackOutput.bind(this),
+        'after:info:info': this.outputStackOutput.bind(this),
+      });
+    }
 
     this.commands = {
       info: {
