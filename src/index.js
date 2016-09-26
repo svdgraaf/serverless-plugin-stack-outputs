@@ -15,7 +15,8 @@ module.exports = Class.extend({
     // find the serverless sdk
     _.forEach(this._serverless.pluginManager.plugins, function(plugin){
       if (plugin.constructor.name == 'AwsInfo') {
-        // got the info plugin
+
+        // got the info plugin, hijack it
         that._SDK = plugin.sdk
       }
     })
@@ -28,7 +29,9 @@ module.exports = Class.extend({
 
   outputStackOutput: function() {
     const stackName = `${this._serverless.service.service}-${this._opts.stage}`;
-    var foo = this._SDK.request('CloudFormation',
+
+    // get all the outputs from AWS
+    this._SDK.request('CloudFormation',
       'describeStacks',
       {
         StackName: stackName
